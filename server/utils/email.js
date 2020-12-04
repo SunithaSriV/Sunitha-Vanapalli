@@ -1,25 +1,24 @@
 const nodemailer = require("nodemailer");
-const sgTransport = require("nodemailer-sendgrid-transport");
 
 module.exports = (email, subject, message) => {
-  const options = {
-    service: "SendGrid",
+  const transporter = nodemailer.createTransport({
+    service: process.env.EMAIL_SERVICE,
     auth: {
-      user: process.env.SENDGRID_USER,
-      pass: process.env.SENDGRID_PASS,
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
     },
-  };
-
-  const client = nodemailer.createTransport(options);
-
-  const emailOptions = {
+  });
+  const mailOptions = {
     from: process.env.MY_EMAIL,
     to: email,
-    subject,
+    subject: subject,
     text: message,
   };
-
-  client.sendMail(emailOptions, (err, info) => {
-    if (!err) console.log("email sent");
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("email sent");
+    }
   });
 };
