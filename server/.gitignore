@@ -3,6 +3,9 @@ node_modules# OS X
 Icon?
 ._*
 
+*.env
+
+
 # Windows
 Thumbs.db
 ehthumbs.db
