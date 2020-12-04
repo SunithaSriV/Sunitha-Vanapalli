@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1
   },
+  menu: { right: '16px' },
   navLink: {
     marginRight: theme.spacing(2)
   }
@@ -89,11 +90,19 @@ const Navbar = () => {
                   <Menu
                     id="menu-appbar"
                     anchorEl={anchorEl}
-                    getContentAnchorEl={null}
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                    transformOrigin={{ horizontal: 'center' }}
-                    keepMounted
+                    anchorReference="none"
+                    PaperProps={{
+                      style: {
+                        right: '5px'
+                      }
+                    }}
+                    MenuListProps={{
+                      style: {
+                        padding: 0
+                      }
+                    }}
                     open={open}
+                    className={classes.menu}
                     onClose={() => setAnchorEl(null)}
                   >
                     {NavLinks.map((nl) => (
