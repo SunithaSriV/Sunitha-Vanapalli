@@ -1,0 +1,6 @@
+Hey {NAME},
+
+I have received your email, will be in touch shortly.
+
+Regards,
+Rohin Chopra

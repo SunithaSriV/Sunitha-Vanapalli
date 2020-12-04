@@ -1,0 +1,7 @@
+Hey Rohin,
+
+You have recieved a message from {NAME} :
+{MESSAGE}
+
+Regards,
+Your Bot
