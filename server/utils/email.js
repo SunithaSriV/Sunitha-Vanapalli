@@ -2,7 +2,6 @@ const nodemailer = require("nodemailer");
 const sgTransport = require("nodemailer-sendgrid-transport");
 
 module.exports = (email, subject, message) => {
-  console.log(email);
   const options = {
     service: "SendGrid",
     auth: {
