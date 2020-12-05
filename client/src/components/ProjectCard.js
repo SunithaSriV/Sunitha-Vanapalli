@@ -62,7 +62,10 @@ const ProjectCard = ({ name, description, imgUrl, srcUrl, liveUrl, tech, classNa
           alt="as"
           src={imgUrl}
         />
-        <CardContent className={`${isMobile ? classes.textCenter : classes.textLeft}`}>
+        <CardContent
+          onClick={() => window.location.assign(srcUrl)}
+          className={`${isMobile ? classes.textCenter : classes.textLeft}`}
+        >
           <Typography gutterBottom variant="h5" component="h2">
             {name}
           </Typography>
