@@ -194,6 +194,7 @@ const HomePage = () => {
           <Typography variant="h5">My Projects</Typography>
           {projects.map((project) => (
             <ProjectCard
+              key={project.name}
               name={project.name}
               description={project.description}
               imgUrl={project.imgUrl}

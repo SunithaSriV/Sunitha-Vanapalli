@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -73,35 +74,50 @@ const ProjectCard = ({ name, description, imgUrl, srcUrl, liveUrl, tech, classNa
             {description}
           </Typography>
           {tech.map((t) => (
-            <Chip className={classes.pill} size="small" label={t} />
+            <Chip key={t} className={classes.pill} size="small" label={t} />
           ))}
         </CardContent>
       </CardActionArea>
       <CardActions className={isMobile ? classes.justifyContentCenter : ''}>
-        <Button
-          component="button"
-          href={liveUrl}
-          target="_blank"
-          rel="noopener"
-          variant="contained"
-          color="primary"
-        >
-          View Live
-          <LanguageIcon className={classes.icon} />
-        </Button>
-        <Button
-          href={srcUrl}
-          target="_blank"
-          rel="noopener"
-          size="small"
-          variant="contained"
-          color="secondary"
-        >
-          View Source
-          <GitHubIcon className={classes.icon} />
-        </Button>
+        {liveUrl ? (
+          <Button
+            component="button"
+            href={liveUrl}
+            target="_blank"
+            rel="noopener"
+            variant="contained"
+            color="primary"
+          >
+            View Live
+            <LanguageIcon className={classes.icon} />
+          </Button>
+        ) : null}
+        {srcUrl ? (
+          <Button
+            href={srcUrl}
+            target="_blank"
+            rel="noopener"
+            size="small"
+            variant="contained"
+            color="secondary"
+          >
+            View Source
+            <GitHubIcon className={classes.icon} />
+          </Button>
+        ) : null}
       </CardActions>
     </Card>
   );
 };
+
+ProjectCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string.isRequired,
+  srcUrl: PropTypes.string,
+  liveUrl: PropTypes.string,
+  tech: PropTypes.arrayOf(PropTypes.string),
+  className: PropTypes.string
+};
+
 export default ProjectCard;
