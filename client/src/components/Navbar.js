@@ -106,7 +106,9 @@ const Navbar = () => {
                     onClose={() => setAnchorEl(null)}
                   >
                     {NavLinks.map((nl) => (
-                      <MenuItem onClick={() => handleMenuClick(nl.toLowerCase())}>{nl}</MenuItem>
+                      <MenuItem key={nl} onClick={() => handleMenuClick(nl.toLowerCase())}>
+                        {nl}
+                      </MenuItem>
                     ))}
                   </Menu>
                 </Fragment>
