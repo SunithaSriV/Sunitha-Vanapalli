@@ -26,16 +26,9 @@ exports.contactMe = (req, res, next) => {
   );
 
   fs.readFile(
-    path.join(__dirname, "../assets/emailReply.txt"),
+    path.join(__dirname, "../assets/emailNotification.txt"),
     "utf-8",
     (err, data) => {
-      if (err)
-        return next(
-          new AppError(
-            "I had trouble sending you an email, try again later!",
-            500
-          )
-        );
       const message = data
         .replace("{NAME}", req.body.name)
         .replace("{MESSAGE}", req.body.message);
