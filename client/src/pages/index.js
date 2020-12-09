@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { makeStyles, TextField } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -10,10 +11,12 @@ import isemail from 'isemail';
 import isEmpty from '../utils/isEmpty';
 import Section from '../components/Section';
 import ProjectCard from '../components/ProjectCard';
+import TestimonialCard from '../components/TestimonialCard';
 
 import cricMeImg from '../assets/cricme.png';
 import mLabsImg from '../assets/m-labs.png';
 import toDoImg from '../assets/todo.png';
+import danielImg from '../assets/daniel.jpg';
 import { ReactComponent as JavaScriptLogo } from '../assets/javascript.svg';
 import { ReactComponent as PythonLogo } from '../assets/python-5.svg';
 import { ReactComponent as ReactLogo } from '../assets/react.svg';
@@ -54,6 +57,13 @@ const useStyles = makeStyles((theme) => ({
   skillContainer: {
     marginTop: theme.spacing(2),
     maxWidth: '52rem'
+  },
+  testimonialsContainer: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    maxWidth: '52rem',
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2)
   },
   contactContainer: {
     marginTop: theme.spacing(2),
@@ -243,6 +253,31 @@ const HomePage = () => {
         </Container>
       </Section>
       <br />
+      <Section id="testimonials">
+        <Container className={classes.testimonialsContainer}>
+          <Typography variant="h5" component="h3" gutterBottom>
+            What other people are saying ?
+          </Typography>
+          <Grid container spacing={3} direction="row" alignItems="center">
+            <Grid item xl={6} lg={6} md={6} xs={12}>
+              <TestimonialCard
+                content="Over the past few months, Rohin has continued to demonstrate incredible resolve in learning not only how to write code, but how to architect solutions that continue to meet and exceed his peers."
+                name="Daniel Ferguson"
+                subtitle="Software Engineer"
+                imgSrc={danielImg}
+              />{' '}
+            </Grid>
+            <Grid item xl={6} lg={6} md={6} xs={12}>
+              <TestimonialCard
+                content="Over the past few months, Rohin has continued to demonstrate incredible resolve in learning not only how to write code, but how to architect solutions that continue to meet and exceed his peers."
+                name="Daniel Ferguson"
+                subtitle="Software Engineer"
+                imgSrc={danielImg}
+              />
+            </Grid>
+          </Grid>
+        </Container>
+      </Section>
       <Section id="contact">
         <Container className={classes.contactContainer}>
           <Typography variant="h5" component="h3">
