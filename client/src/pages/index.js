@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles, useTheme, TextField } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
@@ -229,7 +229,7 @@ const HomePage = () => {
           </div>
         </Container>
       </Section>
-      <Section className={classes.my1}>
+      <Section id="about-me" className={classes.my1}>
         <Container style={{ maxWidth: '52rem', margin: '0px auto' }}>
           <div>
             <Typography variant="h5" component="h3" gutterBottom>

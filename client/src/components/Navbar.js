@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -30,13 +29,14 @@ const useStyles = makeStyles((theme) => ({
 
   navIcon: {
     verticalAlign: 'middle',
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
+    cursor: 'pointer'
   }
 }));
 
 const NavLinks = ['Projects', 'Skills', 'Contact'];
 
-const Navbar = ({ darkState, handleThemeChange }) => {
+const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -90,7 +90,7 @@ const Navbar = ({ darkState, handleThemeChange }) => {
               >
                 <GitHubIcon className={classes.navIcon} />
               </a>
-              {darkState ? (
+              {prefersDarkMode ? (
                 <LightModeIcon className={classes.navIcon} onClick={handleThemeChange} />
               ) : (
                 <DarkModeIcon className={classes.navIcon} onClick={handleThemeChange} />
@@ -135,9 +135,11 @@ const Navbar = ({ darkState, handleThemeChange }) => {
                 <Fragment>
                   {NavLinks.map((nl) => (
                     <Button
+                      key={nl}
                       className={classes.navLink}
                       disableElevation
                       onClick={() => handleMenuClick(nl.toLowerCase())}
+                      style={{ color: '#fff' }}
                     >
                       {nl}
                     </Button>
