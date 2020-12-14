@@ -10,26 +10,24 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-
+import GitHubIcon from '@material-ui/icons/GitHub';
 import { animateScroll as scroll, scroller } from 'react-scroll';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
   },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
+
   title: {
     flexGrow: 1
   },
-  menu: { right: '16px' },
-  navLink: {
-    marginRight: theme.spacing(2)
+
+  navIcon: {
+    verticalAlign: 'middle'
   }
 }));
 
-const NavLinks = ['Home', 'Projects', 'Skills', 'Contact'];
+const NavLinks = ['Projects', 'Skills', 'Contact'];
 
 const Navbar = () => {
   const classes = useStyles();
@@ -76,6 +74,15 @@ const Navbar = () => {
               Rohin Chopra
             </Typography>
             <div>
+              <a
+                href="https://github.com/Rohin1212/personalPortfolioWebsite"
+                target="_blank"
+                rel="noreferrer"
+                title="View Source"
+                style={{ color: '#fff', marginRight: '0.5rem' }}
+              >
+                <GitHubIcon className={classes.navIcon} />
+              </a>
               {isMobile ? (
                 <Fragment>
                   <IconButton
