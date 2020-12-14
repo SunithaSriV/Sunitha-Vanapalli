@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
   navIcon: {
     verticalAlign: 'middle',
-    marginRight: theme.spacing(2),
+    margin: `0 ${theme.spacing(0.5)}px`,
     cursor: 'pointer'
   }
 }));
@@ -72,6 +72,24 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
       elevation: trigger ? 4 : 0
     });
   };
+  const renderGithubAndDarkModeIcons = () => (
+    <Fragment>
+      <a
+        href="https://github.com/Rohin1212/personalPortfolioWebsite"
+        target="_blank"
+        rel="noreferrer"
+        title="View Source"
+        style={{ color: '#fff', marginRight: '0.5rem' }}
+      >
+        <GitHubIcon className={classes.navIcon} />
+      </a>
+      {prefersDarkMode ? (
+        <LightModeIcon className={classes.navIcon} onClick={handleThemeChange} />
+      ) : (
+        <DarkModeIcon className={classes.navIcon} onClick={handleThemeChange} />
+      )}
+    </Fragment>
+  );
   return (
     <div className={classes.root}>
       <ElevationScroll>
@@ -81,22 +99,9 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
               Rohin Chopra
             </Typography>
             <div>
-              <a
-                href="https://github.com/Rohin1212/personalPortfolioWebsite"
-                target="_blank"
-                rel="noreferrer"
-                title="View Source"
-                style={{ color: '#fff', marginRight: '0.5rem' }}
-              >
-                <GitHubIcon className={classes.navIcon} />
-              </a>
-              {prefersDarkMode ? (
-                <LightModeIcon className={classes.navIcon} onClick={handleThemeChange} />
-              ) : (
-                <DarkModeIcon className={classes.navIcon} onClick={handleThemeChange} />
-              )}
               {isMobile ? (
                 <Fragment>
+                  {renderGithubAndDarkModeIcons()}
                   <IconButton
                     edge="start"
                     className={classes.menuButton}
@@ -144,6 +149,7 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
                       {nl}
                     </Button>
                   ))}
+                  {renderGithubAndDarkModeIcons()}
                 </Fragment>
               )}
             </div>
