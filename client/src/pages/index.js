@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import { makeStyles, TextField } from '@material-ui/core';
+import { makeStyles, useTheme, TextField } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -31,14 +32,33 @@ import { ReactComponent as WebpackLogo } from '../assets/webpack-icon.svg';
 import { ReactComponent as AWSLogo } from '../assets/aws-2.svg';
 import { ReactComponent as GitHubLogo } from '../assets/github-icon-1.svg';
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+const Alert = (props) => <MuiAlert elevation={6} variant="filled" {...props} />;
 
 const useStyles = makeStyles((theme) => ({
   bgPrimary: { backgroundColor: '#1D2D50', color: '#FFFFFF' },
-  homeContainer: { textAlign: 'center', paddingTop: '2rem' },
-  homeSection: { paddingBottom: '2rem' },
+
+  homeContainer: {
+    textAlign: 'center',
+    paddingTop: '2rem'
+  },
+  homeTextContainer: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
+  },
+  homeSection: {
+    paddingBottom: '2rem',
+    background:
+      "linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)),url('https://images.creativemarket.com/0.1.0/ps/345860/2417/1608/m1/fpnw/wm0/desk_flat-01-.jpg?1423485279&s=cdfc475b24746cda698158f18f55b8c5') no-repeat center center fixed",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center top',
+    backgroundPositionX: '50%',
+    backgroundPositionY: '0%',
+    maxHeight: '100vh',
+    color: '#fff',
+    opacity: 0.8
+  },
   projectContainer: {
     textAlign: 'center',
     display: 'flex',
@@ -72,11 +92,25 @@ const useStyles = makeStyles((theme) => ({
   },
   formInput: {
     marginBottom: theme.spacing(2)
+  },
+  my1: {
+    margin: '1rem 0'
+  },
+  backgroundAttachmentScroll: {
+    backgroundAttachment: 'scroll'
+  },
+  submitBtn: {
+    width: '100%'
+  },
+  vh50: {
+    height: '50vh !important'
   }
 }));
 
 const HomePage = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const [inputs, setInputs] = useState({});
   const [inputErrors, setInputErrors] = useState({});
   const [areInputsValid, setAreInputsValid] = useState(false);
@@ -117,7 +151,6 @@ const HomePage = () => {
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(inputs)
     })
@@ -131,8 +164,6 @@ const HomePage = () => {
       .catch((err) => {
         console.log(err);
       });
-
-    console.log('sent');
   };
 
   const projects = [
@@ -176,44 +207,65 @@ const HomePage = () => {
 
   return (
     <Fragment>
-      <Section className={`${classes.bgPrimary} ${classes.homeSection}`} id="home">
-        <Container className={classes.homeContainer} fixed>
-          <Typography variant="h5" component="h2">
-            Hey i'm Rohin Chopra
-          </Typography>
-          <Typography variant="subtitle1" component="h2" gutterBottom>
-            Software Developer
-          </Typography>
-          <div style={{ maxWidth: '35em', margin: '0px auto' }}>
+      <Section
+        className={` ${classes.homeSection}  ${isMobile ? classes.backgroundAttachmentScroll : ''}`}
+        id="home"
+        style={{ height: isMobile ? '50vh' : undefined }}
+      >
+        <Container className={`${classes.homeContainer} `} fixed>
+          <div className={classes.homeTextContainer}>
+            <Typography variant="h6" component="h3">
+              Hi👋, I'm
+            </Typography>
+            <Typography variant="h4" component="h2" style={{ fontFamily: "'Caveat', cursive" }}>
+              Rohin Chopra
+            </Typography>
+            <Typography variant="subtitle2" component="h2" gutterBottom>
+              Software Developer
+            </Typography>
+          </div>
+        </Container>
+      </Section>
+      <Section className={classes.my1}>
+        <Container style={{ maxWidth: '52rem', margin: '0px auto' }}>
+          <div>
+            <Typography variant="h5" component="h3" gutterBottom>
+              About Me
+            </Typography>
             <Typography variant="body1" gutterBottom>
               I am an aspiring software developer who is currently studying computer science at
               Swinburne University of Technology.
             </Typography>
             <Typography variant="body1" gutterBottom>
-              I am in love with React and Node.js through which I can provide value to businesses
-              with my programming skills.
+              I am in love developing web apps with React and Node.js through which I can provide
+              value to businesses.
             </Typography>
             <Typography variant="body1" gutterBottom>
-              If I am not coding or Netflixing I am most likely in the gym or making coffee.
+              If I am not coding or Netflixing I am most likely playing with my dog (Shadow) or in
+              the gym or making coffee.
             </Typography>
           </div>
         </Container>
       </Section>
       <Section id="projects">
-        <Container className={classes.projectContainer}>
-          <Typography variant="h5">My Projects</Typography>
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.name}
-              name={project.name}
-              description={project.description}
-              imgUrl={project.imgUrl}
-              className={classes.projectCard}
-              srcUrl={project.srcUrl}
-              liveUrl={project.liveUrl}
-              tech={project.tech}
-            />
-          ))}
+        <Container style={{ maxWidth: '52rem', margin: '0px auto' }}>
+          <Typography variant="h5" gutterBottom>
+            My Projects
+          </Typography>
+          <div className={classes.projectContainer}>
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.name}
+                name={project.name}
+                description={project.description}
+                imgUrl={project.imgUrl}
+                className={classes.projectCard}
+                srcUrl={project.srcUrl}
+                liveUrl={project.liveUrl}
+                tech={project.tech}
+              />
+            ))}
+          </div>
         </Container>
       </Section>
       <br />
@@ -253,6 +305,7 @@ const HomePage = () => {
         </Container>
       </Section>
       <br />
+
       <Section id="testimonials">
         <Container className={classes.testimonialsContainer}>
           <Typography variant="h5" component="h3" gutterBottom>
@@ -319,7 +372,7 @@ const HomePage = () => {
               />
               <Button
                 disabled={!areInputsValid}
-                style={{ width: '100%' }}
+                className={classes.submitBtn}
                 variant="contained"
                 color="primary"
                 onClick={handleSubmit}
