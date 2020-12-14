@@ -3,31 +3,35 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Home from '../pages';
-import { lightBlue } from '@material-ui/core/colors';
+import { lightBlue, orange } from '@material-ui/core/colors';
 
 const App = () => {
   const [prefersDarkMode, setPrefersDarkMode] = useState(false);
   const palletType = prefersDarkMode ? 'dark' : 'light';
-  const mainPrimaryColor = prefersDarkMode ? '#303030' : lightBlue[500];
-
+  const mainPrimaryColor = prefersDarkMode ? '#222831' : '#459d72';
+  const secondaryPrimaryColor = prefersDarkMode ? '#393e46' : '#90d26d';
   useEffect(() => {
     setPrefersDarkMode(Boolean(localStorage.getItem('prefersDarkMode')) || false);
   }, []);
 
-  const darkTheme = createMuiTheme({
+  const theme = createMuiTheme({
     palette: {
-      type: palletType
-    },
-    primary: {
-      main: mainPrimaryColor
+      type: palletType,
+      primary: {
+        main: mainPrimaryColor
+      },
+      secondary: {
+        main: secondaryPrimaryColor
+      }
     }
   });
   const handleThemeChange = () => {
-    setPrefersDarkMode(!prefersDarkMode);
-    localStorage.setItem('prefersDarkMode', String(!prefersDarkMode));
+    const isDarkMode = !prefersDarkMode;
+    setPrefersDarkMode(isDarkMode);
+    localStorage.setItem('prefersDarkMode', String(isDarkMode));
   };
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <Navbar handleThemeChange={handleThemeChange} prefersDarkMode={prefersDarkMode} />
       <Home />
       <Footer />
