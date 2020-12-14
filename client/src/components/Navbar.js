@@ -67,11 +67,11 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
       threshold: 0,
       target: window ? window() : undefined
     });
-
     return React.cloneElement(children, {
       elevation: trigger ? 4 : 0
     });
   };
+
   const renderGithubAndDarkModeIcons = () => (
     <Fragment>
       <a
@@ -84,9 +84,17 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
         <GitHubIcon className={classes.navItem} />
       </a>
       {prefersDarkMode ? (
-        <LightModeIcon className={classes.navItem} onClick={handleThemeChange} />
+        <LightModeIcon
+          titleAccess="Enable Dark Mode"
+          className={classes.navItem}
+          onClick={handleThemeChange}
+        />
       ) : (
-        <DarkModeIcon className={classes.navItem} onClick={handleThemeChange} />
+        <DarkModeIcon
+          titleAccess="Enable Light Mode"
+          className={classes.navItem}
+          onClick={handleThemeChange}
+        />
       )}
     </Fragment>
   );

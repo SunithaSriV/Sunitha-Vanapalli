@@ -315,7 +315,7 @@ const HomePage = () => {
           <Typography variant="h5" component="h3" gutterBottom>
             What other people are saying ?
           </Typography>
-          <Grid container spacing={3} direction="row" alignItems="center">
+          <Grid container spacing={3} direction="row" alignItems="flex-start">
             <Grid item xl={6} lg={6} md={6} xs={12}>
               <TestimonialCard
                 content="Over the past few months, Rohin has continued to demonstrate incredible resolve in learning not only how to write code, but how to architect solutions that continue to meet and exceed his peers."
