@@ -27,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
 
-  navIcon: {
+  navItem: {
     verticalAlign: 'middle',
-    margin: `0 ${theme.spacing(0.5)}px`,
+    margin: `0 ${theme.spacing(1)}px`,
     cursor: 'pointer'
   }
 }));
@@ -81,12 +81,12 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
         title="View Source"
         style={{ color: '#fff', marginRight: '0.5rem' }}
       >
-        <GitHubIcon className={classes.navIcon} />
+        <GitHubIcon className={classes.navItem} />
       </a>
       {prefersDarkMode ? (
-        <LightModeIcon className={classes.navIcon} onClick={handleThemeChange} />
+        <LightModeIcon className={classes.navItem} onClick={handleThemeChange} />
       ) : (
-        <DarkModeIcon className={classes.navIcon} onClick={handleThemeChange} />
+        <DarkModeIcon className={classes.navItem} onClick={handleThemeChange} />
       )}
     </Fragment>
   );
@@ -104,7 +104,7 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
                   {renderGithubAndDarkModeIcons()}
                   <IconButton
                     edge="start"
-                    className={classes.menuButton}
+                    className={classes.navItem}
                     color="inherit"
                     aria-label="menu"
                     onClick={handleMenu}
