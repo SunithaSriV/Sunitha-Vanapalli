@@ -7,8 +7,13 @@ import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    padding: '2rem',
-    maxWidth: '30rem'
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '100%'
+    },
+    [theme.breakpoints.up('sm')]: {
+      maxWidth: '30rem'
+    },
+    padding: '2rem'
   },
   lead: {
     fontSize: '1.25rem',
