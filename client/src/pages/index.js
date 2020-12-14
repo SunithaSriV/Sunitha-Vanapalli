@@ -18,6 +18,7 @@ import cricMeImg from '../assets/cricme.png';
 import mLabsImg from '../assets/m-labs.png';
 import toDoImg from '../assets/todo.png';
 import danielImg from '../assets/daniel.jpg';
+import deborahImg from '../assets/deborah.jpg';
 import { ReactComponent as JavaScriptLogo } from '../assets/javascript.svg';
 import { ReactComponent as PythonLogo } from '../assets/python-5.svg';
 import { ReactComponent as ReactLogo } from '../assets/react.svg';
@@ -327,7 +328,7 @@ const HomePage = () => {
                 content="Rohin has been fantastic to work with in building my website. He was very prompt in responding to all feedback and processing any changes. He listened to what I needed and came up with great ideas so I was able to achieve what I need from my website. I would have no hesitation in recommending him."
                 name="Deborah Eddy"
                 subtitle="Owner, Margembie Labradors"
-                imgSrc={danielImg}
+                imgSrc={deborahImg}
               />
             </Grid>
           </Grid>
