@@ -324,9 +324,9 @@ const HomePage = () => {
             </Grid>
             <Grid item xl={6} lg={6} md={6} xs={12}>
               <TestimonialCard
-                content="Over the past few months, Rohin has continued to demonstrate incredible resolve in learning not only how to write code, but how to architect solutions that continue to meet and exceed his peers."
-                name="Daniel Ferguson"
-                subtitle="Software Engineer"
+                content="Rohin has been fantastic to work with in building my website. He was very prompt in responding to all feedback and processing any changes. He listened to what I needed and came up with great ideas so I was able to achieve what I need from my website. I would have no hesitation in recommending him."
+                name="Deborah Eddy"
+                subtitle="Owner, Margembie Labradors"
                 imgSrc={danielImg}
               />
             </Grid>
