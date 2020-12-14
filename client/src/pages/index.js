@@ -35,8 +35,10 @@ import { ReactComponent as GitHubLogo } from '../assets/github-icon-1.svg';
 const Alert = (props) => <MuiAlert elevation={6} variant="filled" {...props} />;
 
 const useStyles = makeStyles((theme) => ({
-  bgPrimary: { backgroundColor: '#1D2D50', color: '#FFFFFF' },
-
+  root: {
+    backgroundColor: theme.palette.background.default,
+    color: theme.palette.text.primary
+  },
   homeContainer: {
     textAlign: 'center',
     paddingTop: '2rem'
@@ -206,7 +208,7 @@ const HomePage = () => {
   ];
 
   return (
-    <Fragment>
+    <main className={classes.root}>
       <Section
         className={` ${classes.homeSection}  ${isMobile ? classes.backgroundAttachmentScroll : ''}`}
         id="home"
@@ -395,7 +397,7 @@ const HomePage = () => {
           </Snackbar>
         </Container>
       </Section>
-    </Fragment>
+    </main>
   );
 };
 

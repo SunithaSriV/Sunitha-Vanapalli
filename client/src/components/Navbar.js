@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,25 +12,31 @@ import Menu from '@material-ui/core/Menu';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import DarkModeIcon from '@material-ui/icons/Brightness4';
+import LightModeIcon from '@material-ui/icons/Brightness7';
 import { animateScroll as scroll, scroller } from 'react-scroll';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
   },
-
+  appBar: {
+    backgroundColor:
+      theme.palette.type === 'dark' ? theme.palette.background.default : theme.palette.primary.main
+  },
   title: {
     flexGrow: 1
   },
 
   navIcon: {
-    verticalAlign: 'middle'
+    verticalAlign: 'middle',
+    marginRight: theme.spacing(2)
   }
 }));
 
 const NavLinks = ['Projects', 'Skills', 'Contact'];
 
-const Navbar = () => {
+const Navbar = ({ darkState, handleThemeChange }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -68,7 +75,7 @@ const Navbar = () => {
   return (
     <div className={classes.root}>
       <ElevationScroll>
-        <AppBar position="sticky">
+        <AppBar position="sticky" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
               Rohin Chopra
@@ -83,6 +90,11 @@ const Navbar = () => {
               >
                 <GitHubIcon className={classes.navIcon} />
               </a>
+              {darkState ? (
+                <LightModeIcon className={classes.navIcon} onClick={handleThemeChange} />
+              ) : (
+                <DarkModeIcon className={classes.navIcon} onClick={handleThemeChange} />
+              )}
               {isMobile ? (
                 <Fragment>
                   <IconButton
@@ -124,8 +136,6 @@ const Navbar = () => {
                   {NavLinks.map((nl) => (
                     <Button
                       className={classes.navLink}
-                      variant="contained"
-                      color="primary"
                       disableElevation
                       onClick={() => handleMenuClick(nl.toLowerCase())}
                     >
