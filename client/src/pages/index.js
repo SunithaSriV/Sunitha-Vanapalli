@@ -60,7 +60,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPositionY: '0%',
     maxHeight: '100vh',
     color: '#fff',
-    opacity: 0.8
+    opacity: 0.8,
+    position: 'relative'
   },
   projectContainer: {
     textAlign: 'center',
