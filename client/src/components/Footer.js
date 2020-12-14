@@ -33,8 +33,8 @@ const useClasses = makeStyles((theme) => ({
 }));
 
 const Footer = () => {
-  const classes = useClasses();
-  const theme = useTheme(theme);
+  const theme = useTheme();
+  const classes = useClasses(theme);
   return (
     <Fragment>
       <Divider />
