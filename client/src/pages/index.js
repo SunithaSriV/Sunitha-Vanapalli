@@ -40,16 +40,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     color: theme.palette.text.primary
   },
-  homeContainer: {
-    textAlign: 'center',
-    paddingTop: '2rem'
-  },
-  homeTextContainer: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)'
-  },
   homeSection: {
     paddingBottom: '2rem',
     background:
@@ -62,6 +52,16 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     opacity: 0.8,
     position: 'relative'
+  },
+  homeContainer: {
+    textAlign: 'center',
+    paddingTop: '2rem'
+  },
+  homeTextContainer: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
   },
   projectContainer: {
     textAlign: 'center',

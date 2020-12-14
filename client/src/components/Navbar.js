@@ -93,7 +93,7 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
   return (
     <div className={classes.root}>
       <ElevationScroll>
-        <AppBar position="sticky" className={classes.appBar}>
+        <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
               Rohin Chopra
