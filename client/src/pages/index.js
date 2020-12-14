@@ -210,7 +210,7 @@ const HomePage = () => {
       <Section
         className={` ${classes.homeSection}  ${isMobile ? classes.backgroundAttachmentScroll : ''}`}
         id="home"
-        style={{ height: isMobile ? '50vh' : undefined }}
+        style={{ height: isMobile ? '50vh' : '80vh' }}
       >
         <Container className={`${classes.homeContainer} `} fixed>
           <div className={classes.homeTextContainer}>
