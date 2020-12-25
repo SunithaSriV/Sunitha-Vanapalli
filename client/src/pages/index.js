@@ -16,7 +16,7 @@ import TestimonialCard from '../components/TestimonialCard';
 
 import cricMeImg from '../assets/cricme.png';
 import mLabsImg from '../assets/m-labs.png';
-import toDoImg from '../assets/todo.png';
+import githubImg from '../assets/github.jpg';
 import danielImg from '../assets/daniel.jpg';
 import deborahImg from '../assets/deborah.jpg';
 import { ReactComponent as JavaScriptLogo } from '../assets/javascript.svg';
@@ -199,13 +199,13 @@ const HomePage = () => {
       tech: ['React', 'React-Router', 'React-Bootstrap', 'Bootstrap', 'Netlify']
     },
     {
-      name: 'To Do App',
+      name: 'Github Repos Timeline Generator',
       description:
-        'A React website that allows you to achieve productivity by keeping on top of your tasks.',
-      imgUrl: toDoImg,
-      srcUrl: 'https://github.com/Rohin1212/toDoApp',
-      liveUrl: 'https://rohin-to-do.netlify.app',
-      tech: ['React', 'React-Bootstrap', 'Bootstrap', 'Netlify']
+        "A web app made with React and React-Router that generates a nicely formatted timeline for a given user's Github repos.",
+      imgUrl: githubImg,
+      srcUrl: 'https://github.com/Rohin1212/github-timeline',
+      liveUrl: 'https://hopeful-bartik-f386d3.netlify.app',
+      tech: ['React', 'Material-Ui', 'Netlify']
     }
   ];
 
@@ -241,8 +241,8 @@ const HomePage = () => {
               Swinburne University of Technology.
             </Typography>
             <Typography variant="body1" gutterBottom>
-              I am in love developing web apps with React and Node.js through which I can provide
-              value to businesses.
+              I am in love developing cloud based web apps with React and Node.js through which I
+              can provide value to businesses.
             </Typography>
             <Typography variant="body1" gutterBottom>
               If I am not coding or Netflixing I am most likely playing with my dog (Shadow) or in
