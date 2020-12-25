@@ -3,7 +3,6 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Home from '../pages';
-import { lightBlue, orange } from '@material-ui/core/colors';
 
 const App = () => {
   const [prefersDarkMode, setPrefersDarkMode] = useState(false);

@@ -13,7 +13,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import DarkModeIcon from '@material-ui/icons/Brightness4';
 import LightModeIcon from '@material-ui/icons/Brightness7';
-import { animateScroll as scroll, scroller } from 'react-scroll';
+import { scroller } from 'react-scroll';
 
 const useStyles = makeStyles((theme) => ({
   root: {
