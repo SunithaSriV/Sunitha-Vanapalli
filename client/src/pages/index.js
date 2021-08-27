@@ -1,39 +1,39 @@
-import React from 'react';
-import { makeStyles, useTheme, TextField } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
-import isemail from 'isemail';
-import isEmpty from '../utils/isEmpty';
-import Section from '../components/Section';
-import ProjectCard from '../components/ProjectCard';
-import TestimonialCard from '../components/TestimonialCard';
+import React, { useState, useEffect } from 'react'
+import { makeStyles, useTheme, TextField } from '@material-ui/core'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import Container from '@material-ui/core/Container'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Snackbar from '@material-ui/core/Snackbar'
+import MuiAlert from '@material-ui/lab/Alert'
+import isemail from 'isemail'
+import isEmpty from '../utils/isEmpty'
+import Section from '../components/Section'
+import ProjectCard from '../components/ProjectCard'
+import TestimonialCard from '../components/TestimonialCard'
 
-import cricMeImg from '../assets/cricme.png';
-import mLabsImg from '../assets/m-labs.png';
-import githubImg from '../assets/github.jpg';
-import danielImg from '../assets/daniel.jpg';
-import deborahImg from '../assets/deborah.jpg';
-import { ReactComponent as JavaScriptLogo } from '../assets/javascript.svg';
-import { ReactComponent as PythonLogo } from '../assets/python-5.svg';
-import { ReactComponent as ReactLogo } from '../assets/react.svg';
-import { ReactComponent as BootstrapLogo } from '../assets/bootstrap-5-1.svg';
-import { ReactComponent as NodeLogo } from '../assets/nodejs.svg';
-import { ReactComponent as ExpressLogo } from '../assets/express-109.svg';
-import { ReactComponent as FlaskLogo } from '../assets/flask.svg';
-import { ReactComponent as MongoDBLogo } from '../assets/mongodb.svg';
-import { ReactComponent as MySQLLogo } from '../assets/mysql.svg';
-import { ReactComponent as PostGreSQLLogo } from '../assets/postgresql.svg';
-import { ReactComponent as WebpackLogo } from '../assets/webpack-icon.svg';
-import { ReactComponent as AWSLogo } from '../assets/aws-2.svg';
-import { ReactComponent as GitHubLogo } from '../assets/github-icon-1.svg';
+import cricMeImg from '../assets/cricme.png'
+import mLabsImg from '../assets/m-labs.png'
+import digishelfImg from '../assets/digishelf.png'
+import danielImg from '../assets/daniel.jpg'
+import deborahImg from '../assets/deborah.jpg'
+import { ReactComponent as JavaScriptLogo } from '../assets/javascript.svg'
+import { ReactComponent as PythonLogo } from '../assets/python-5.svg'
+import { ReactComponent as ReactLogo } from '../assets/react.svg'
+import { ReactComponent as BootstrapLogo } from '../assets/bootstrap-5-1.svg'
+import { ReactComponent as NodeLogo } from '../assets/nodejs.svg'
+import { ReactComponent as ExpressLogo } from '../assets/express-109.svg'
+import { ReactComponent as FlaskLogo } from '../assets/flask.svg'
+import { ReactComponent as MongoDBLogo } from '../assets/mongodb.svg'
+import { ReactComponent as MySQLLogo } from '../assets/mysql.svg'
+import { ReactComponent as PostGreSQLLogo } from '../assets/postgresql.svg'
+import { ReactComponent as WebpackLogo } from '../assets/webpack-icon.svg'
+import { ReactComponent as AWSLogo } from '../assets/aws-2.svg'
+import { ReactComponent as GitHubLogo } from '../assets/github-icon-1.svg'
 
-const Alert = (props) => <MuiAlert elevation={6} variant="filled" {...props} />;
+const Alert = (props) => <MuiAlert elevation={6} variant="filled" {...props} />
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -109,47 +109,47 @@ const useStyles = makeStyles((theme) => ({
   vh50: {
     height: '50vh !important'
   }
-}));
+}))
 
 const HomePage = () => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
-  const [inputs, setInputs] = useState({});
-  const [inputErrors, setInputErrors] = useState({});
-  const [areInputsValid, setAreInputsValid] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [showSnackbar, setShowSnackbar] = useState(false);
-  const [apiResponse, setApiResponse] = useState('');
+  const classes = useStyles()
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'))
+  const [inputs, setInputs] = useState({ })
+  const [inputErrors, setInputErrors] = useState({ })
+  const [areInputsValid, setAreInputsValid] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [showSnackbar, setShowSnackbar] = useState(false)
+  const [apiResponse, setApiResponse] = useState('')
 
   const inputValidationConfig = {
     name: (el) => {
-      const isEmptyMessage = isEmpty(el, 'Name');
+      const isEmptyMessage = isEmpty(el, 'Name')
       if (isEmptyMessage) {
-        return isEmptyMessage;
+        return isEmptyMessage
       } else if (el.length < 2) {
-        return 'Name has to be more than 2 chars';
+        return 'Name has to be more than 2 chars'
       }
     },
     email: (el) => (isemail.validate(el) ? '' : 'Invalid Email'),
     message: (el) => isEmpty(el, 'Message')
-  };
+  }
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setInputs({ ...inputs, [name]: value });
-    setInputErrors({ [name]: inputValidationConfig[name](value) });
+    const { name, value } = e.target
+    setInputs({ ...inputs, [name]: value })
+    setInputErrors({ [name]: inputValidationConfig[name](value) })
     for (let key in inputErrors) {
       if (inputErrors[key] !== '') {
-        setAreInputsValid(false);
-        return;
+        setAreInputsValid(false)
+        return
       }
     }
-    setAreInputsValid(true);
-  };
+    setAreInputsValid(true)
+  }
 
   const handleSubmit = () => {
-    setLoading(true);
+    setLoading(true)
     fetch('https://mighty-beyond-83175.herokuapp.com/api/v1/contact', {
       method: 'POST',
       mode: 'cors',
@@ -160,17 +160,26 @@ const HomePage = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        setLoading(false);
-        setShowSnackbar(true);
-        setApiResponse({ ...data });
+        console.log(data)
+        setLoading(false)
+        setShowSnackbar(true)
+        setApiResponse({ ...data })
       })
       .catch((err) => {
-        console.log(err);
-      });
-  };
+        console.log(err)
+      })
+  }
 
   const projects = [
+    {
+      name: 'Digishelf',
+      description:
+        'A MERN full stack website fully deployed in AWS which allows users to create digital shelves where users can store their favorite movies and tv shows. They can share these shelfs with their friends and cherish their collection of watched tv and movies.',
+      imgUrl: digishelfImg,
+      srcUrl: 'https://github.com/Rohin1212/DigiShelf',
+      liveUrl: 'https://digishelf.rohindev.com/',
+      tech: ['React', 'Express', 'Nodejs', 'Tailwind.css', 'AWS', 'AWS Lambda', 'Google/Facebook Auth']
+    },
     {
       name: 'CricMe',
       description:
@@ -197,17 +206,8 @@ const HomePage = () => {
       srcUrl: 'https://github.com/Rohin1212/cric-me',
       liveUrl: 'https://www.margembielabradors.com.au',
       tech: ['React', 'React-Router', 'React-Bootstrap', 'Bootstrap', 'Netlify']
-    },
-    {
-      name: 'Github Repos Timeline Generator',
-      description:
-        "A web app made with React and React-Router that generates a nicely formatted timeline for a given user's Github repos.",
-      imgUrl: githubImg,
-      srcUrl: 'https://github.com/Rohin1212/github-timeline',
-      liveUrl: 'https://hopeful-bartik-f386d3.netlify.app',
-      tech: ['React', 'Material-Ui', 'Netlify']
     }
-  ];
+  ]
 
   return (
     <main className={classes.root}>
@@ -237,12 +237,8 @@ const HomePage = () => {
               About Me
             </Typography>
             <Typography variant="body1" gutterBottom>
-              I am an aspiring software developer who is currently studying computer science at
+              Full stack Software Engineer who is currently building cloud based web apps with React and Nodejs through AWS. Currently studying bachelors of computer science at
               Swinburne University of Technology.
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              I am in love developing cloud based web apps with React and Node.js through which I
-              can provide value to businesses.
             </Typography>
             <Typography variant="body1" gutterBottom>
               If I am not coding or Netflixing I am most likely playing with my dog (Shadow) or in
@@ -400,7 +396,7 @@ const HomePage = () => {
         </Container>
       </Section>
     </main>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage
