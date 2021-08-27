@@ -64,7 +64,7 @@ const ProjectCard = ({ name, description, imgUrl, srcUrl, liveUrl, tech, classNa
           src={imgUrl}
         />
         <CardContent
-          onClick={() => window.location.assign(srcUrl)}
+          onClick={() => window.open(srcUrl, '_blank').focus()}
           className={`${isMobile ? classes.textCenter : classes.textLeft}`}
         >
           <Typography gutterBottom variant="h5" component="h2">
