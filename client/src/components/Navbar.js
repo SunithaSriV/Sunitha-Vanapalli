@@ -1,19 +1,19 @@
-import React, { Fragment } from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import DarkModeIcon from '@material-ui/icons/Brightness4';
-import LightModeIcon from '@material-ui/icons/Brightness7';
-import { scroller } from 'react-scroll';
+import React, { useState, useEffect, Fragment } from 'react'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import Menu from '@material-ui/core/Menu'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import useScrollTrigger from '@material-ui/core/useScrollTrigger'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import DarkModeIcon from '@material-ui/icons/Brightness4'
+import LightModeIcon from '@material-ui/icons/Brightness7'
+import { scroller } from 'react-scroll'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
       theme.palette.type === 'dark' ? theme.palette.background.default : theme.palette.primary.main
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    animation: 'showup 0.5s 1'
   },
 
   navItem: {
@@ -32,20 +33,20 @@ const useStyles = makeStyles((theme) => ({
     margin: `0 ${theme.spacing(1)}px`,
     cursor: 'pointer'
   }
-}));
+}))
 
-const NavLinks = ['Projects', 'Skills', 'Contact'];
+const NavLinks = ['Projects', 'Skills', 'Contact']
 
 const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
-
+  const classes = useStyles()
+  const [anchorEl, setAnchorEl] = useState(null)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const open = Boolean(anchorEl)
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'))
   const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleMenuClick = (sectionId) => {
     scroller.scrollTo(sectionId, {
@@ -54,11 +55,11 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
       smooth: true,
       offset: 50,
       activeClass: 'active'
-    });
-    setAnchorEl(null);
-  };
+    })
+    setAnchorEl(null)
+  }
   const ElevationScroll = (props) => {
-    const { children, window } = props;
+    const { children, window } = props
     // Note that you normally won't need to set the window ref as useScrollTrigger
     // will default to window.
     // This is only being set here because the demo is in an iframe.
@@ -66,12 +67,24 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
       disableHysteresis: true,
       threshold: 0,
       target: window ? window() : undefined
-    });
+    })
+    // setIsScrolled(trigger)
     return React.cloneElement(children, {
       elevation: trigger ? 4 : 0
-    });
-  };
+    })
+  }
+  const handleScroll = (e) => {
+    if (!isScrolled && window.scrollY < 200) {
+      setIsScrolled(window.scrollY > 200)
+    }
+  }
 
+  useEffect(() => {
+    const scrollEventListener = window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', scrollEventListener)
+    }
+  }, [])
   const renderGithubAndDarkModeIcons = () => (
     <Fragment>
       <a
@@ -97,14 +110,14 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
         />
       )}
     </Fragment>
-  );
+  )
   return (
     <div className={classes.root}>
       <ElevationScroll>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
-              Rohin Chopra
+              {!isScrolled ? 'Rohin Chopra' : '<Rohin.Chopra />'}
             </Typography>
             <div>
               {isMobile ? (
@@ -165,6 +178,6 @@ const Navbar = ({ prefersDarkMode, handleThemeChange }) => {
         </AppBar>
       </ElevationScroll>
     </div>
-  );
-};
-export default Navbar;
+  )
+}
+export default Navbar

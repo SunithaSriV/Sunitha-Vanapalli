@@ -3,3 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@keyframes showup {
+  0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
