@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { makeStyles, useTheme, TextField } from '@material-ui/core'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Grid from '@material-ui/core/Grid'
@@ -13,7 +13,8 @@ import isEmpty from '../utils/isEmpty'
 import Section from '../components/Section'
 import ProjectCard from '../components/ProjectCard'
 import TestimonialCard from '../components/TestimonialCard'
-
+import awsCCPCertImage from '../assets/aws-certified-cloud-practitioner.png'
+import awsSAACertImage from '../assets/aws-certified-solutions-architect-associate.png'
 import cricMeImg from '../assets/cricme.png'
 import mLabsImg from '../assets/m-labs.png'
 import digishelfImg from '../assets/digishelf.png'
@@ -225,7 +226,7 @@ const HomePage = () => {
               Rohin Chopra
             </Typography>
             <Typography variant="subtitle2" component="h2" gutterBottom>
-              Software Developer
+              Software Engineeer
             </Typography>
           </div>
         </Container>
@@ -301,6 +302,13 @@ const HomePage = () => {
           </Typography>
           <div>
             <AWSLogo className={classes.SkillLogo} /> <GitHubLogo className={classes.SkillLogo} />{' '}
+          </div>
+          <Typography variant="h6" component="h3">
+            Certifications
+          </Typography>
+          <div>
+            <img src={awsSAACertImage} />
+            <img src={awsCCPCertImage} />
           </div>
         </Container>
       </Section>
