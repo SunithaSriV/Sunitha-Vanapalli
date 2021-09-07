@@ -303,6 +303,7 @@ const HomePage = () => {
               <MongoDBLogo className={classes.SkillLogo} />{' '}
               <MySQLLogo className={classes.SkillLogo} />{' '}
               <PostGreSQLLogo className={classes.SkillLogo} />
+              <DockerLogo className={classes.SkillLogo} style={{ width: '100px' }} />
               <WebpackLogo className={classes.SkillLogo} />
             </div>
           </div>
@@ -313,7 +314,6 @@ const HomePage = () => {
             <div>
               <AWSLogo className={classes.SkillLogo} />
               <GitHubLogo className={classes.SkillLogo} />{' '}
-              <DockerLogo className={classes.SkillLogo} style={{ width: '100px' }} />
             </div>
           </div>
           <div className={classes.my1}>
