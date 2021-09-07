@@ -33,6 +33,8 @@ import { ReactComponent as PostGreSQLLogo } from '../assets/postgresql.svg'
 import { ReactComponent as WebpackLogo } from '../assets/webpack-icon.svg'
 import { ReactComponent as AWSLogo } from '../assets/aws-2.svg'
 import { ReactComponent as GitHubLogo } from '../assets/github-icon-1.svg'
+import { ReactComponent as DockerLogo } from '../assets/docker.svg'
+import { ReactComponent as TailwindLogo } from '../assets/tailwindcss-ar21.svg'
 
 const Alert = (props) => <MuiAlert elevation={6} variant="filled" {...props} />
 
@@ -116,8 +118,8 @@ const HomePage = () => {
   const classes = useStyles()
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'))
-  const [inputs, setInputs] = useState({ })
-  const [inputErrors, setInputErrors] = useState({ })
+  const [inputs, setInputs] = useState({})
+  const [inputErrors, setInputErrors] = useState({})
   const [areInputsValid, setAreInputsValid] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showSnackbar, setShowSnackbar] = useState(false)
@@ -220,7 +222,7 @@ const HomePage = () => {
         <Container className={`${classes.homeContainer} `} fixed>
           <div className={classes.homeTextContainer}>
             <Typography variant="h6" component="h3">
-              Hi👋, I'm
+              Hi <span style={{ display: 'inline-block' }} className='shake'>👋</span>, I'm
             </Typography>
             <Typography variant="h4" component="h2" style={{ fontFamily: "'Caveat', cursive" }}>
               Rohin Chopra
@@ -276,44 +278,56 @@ const HomePage = () => {
           <Typography variant="h5" component="h2">
             Skills
           </Typography>
-          <Typography variant="h6" component="h3">
-            Languages and Frameworks
-          </Typography>
-          <div>
-            <JavaScriptLogo className={classes.SkillLogo} />
-            <ReactLogo className={classes.SkillLogo} />
-            <NodeLogo style={{ verticalAlign: 'middle' }} className={classes.SkillLogo} />
-            <ExpressLogo className={classes.SkillLogo} />{' '}
-            <PythonLogo className={classes.SkillLogo} />
-            <FlaskLogo className={classes.SkillLogo} />
-            <BootstrapLogo className={classes.SkillLogo} />{' '}
+
+
+          <div className={classes.my1}>
+            <Typography variant="h6" component="h3">
+              Languages and Frameworks
+            </Typography>
+            <div>
+              <JavaScriptLogo className={classes.SkillLogo} />
+              <ReactLogo className={classes.SkillLogo} />
+              <NodeLogo style={{ verticalAlign: 'middle' }} className={classes.SkillLogo} />
+              <ExpressLogo className={classes.SkillLogo} />{' '}
+              <PythonLogo className={classes.SkillLogo} />
+              <FlaskLogo className={classes.SkillLogo} />
+              <BootstrapLogo className={classes.SkillLogo} />{' '}
+              <TailwindLogo className={classes.SkillLogo} style={{ width: '130px' }} />{' '}
+            </div>
           </div>
-          <Typography variant="h6" component="h3">
-            Technologies
+          <div className={classes.my1}>
+            <Typography variant="h6" component="h3">
+              Technologies
+            </Typography>
             <div>
               <MongoDBLogo className={classes.SkillLogo} />{' '}
               <MySQLLogo className={classes.SkillLogo} />{' '}
               <PostGreSQLLogo className={classes.SkillLogo} />
               <WebpackLogo className={classes.SkillLogo} />
             </div>
-          </Typography>
-          <Typography variant="h6" component="h3">
-            Services
-          </Typography>
-          <div>
-            <AWSLogo className={classes.SkillLogo} /> <GitHubLogo className={classes.SkillLogo} />{' '}
           </div>
-          <Typography variant="h6" component="h3">
-            Certifications
-          </Typography>
-          <div>
-            <img src={awsSAACertImage} />
-            <img src={awsCCPCertImage} />
+          <div className={classes.my1}>
+            <Typography variant="h6" component="h3"  >
+              Services
+            </Typography>
+            <div>
+              <AWSLogo className={classes.SkillLogo} />
+              <GitHubLogo className={classes.SkillLogo} />{' '}
+              <DockerLogo className={classes.SkillLogo} style={{ width: '100px' }} />
+            </div>
+          </div>
+          <div className={classes.my1}>
+            <Typography variant="h6" component="h3">
+              Certifications
+            </Typography>
+            <div>
+              <img src={awsSAACertImage} alt="AWS Certified Solutions Architect Associate" />
+              <img src={awsCCPCertImage} alt="AWS Certified Cloud Practitioner" />
+            </div>
           </div>
         </Container>
       </Section>
       <br />
-
       <Section id="testimonials">
         <Container className={classes.testimonialsContainer}>
           <Typography variant="h5" component="h3" gutterBottom>
