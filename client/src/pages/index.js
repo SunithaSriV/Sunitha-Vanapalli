@@ -240,8 +240,7 @@ const HomePage = () => {
               About Me
             </Typography>
             <Typography variant="body1" gutterBottom>
-              Full stack Software Engineer who is currently building cloud based web apps with React and Nodejs through AWS. Currently studying bachelors of computer science at
-              Swinburne University of Technology.
+              Full stack Software Engineer who is currently building cloud based web apps with React and Nodejs through AWS.
             </Typography>
             <Typography variant="body1" gutterBottom>
               If I am not coding or Netflixing I am most likely playing with my dog (Shadow) or in
