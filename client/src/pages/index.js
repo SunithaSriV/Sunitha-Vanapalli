@@ -228,7 +228,7 @@ const HomePage = () => {
               Rohin Chopra
             </Typography>
             <Typography variant="subtitle2" component="h2" gutterBottom>
-              Software Engineeer
+              Full Stack Software Engineer | AWS Solutions Architect
             </Typography>
           </div>
         </Container>
